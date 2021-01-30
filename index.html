@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div id="login-area" class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="case-count" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <p> <span onclick="handleProductChange('case', true)" >+</span> <span onclick="handleProductChange('case',false)">-</span> </p>
+                    <h6 id="case-total">$150</h6>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="0">Economy ($100)</label>
+                    <input id="phone-count" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div  class="plus-minus-btn">
+                    <p> <span onclick="handleProductChange('phone', true)" >+</span> <span onclick="handleProductChange('phone',false)">-</span> </p>
+                    <h6 id="phone-total">$100</h6>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="total-price">$500</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p id="tax-amount">Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="grandTotal">$550</p>
+                    </div>
+                </div>
+            </div>
+            <button id="login" class="btn-style">Book Now</button>
+        </div>
+
+        <div  id="login-area1" class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+        
+        
+        <div id="thankYou" class="main-content container ">
+            <h1>Thank You for <br> picking us</h1>
+            
+        </div>
+    </section>
+    
+
+    <!--Thank You-->
+    <script>
+        function handleProductChange(product, isIncrease) {
+            
+            const productCount = getInputValue(product);
+        let productNewCount = productCount;
+            if(isIncrease == true && productCount>0){
+                productNewCount = productCount + 1;
+            }
+            if(isIncrease == false && productCount>0){
+                productNewCount = productCount - 1;
+            }
+            document.getElementById(product + '-count').value = productNewCount;
+        let productTotal=0;
+            if(product== 'case'){
+                productTotal = productNewCount * 150;
+            }
+            if(product== 'phone'){
+                productTotal = productNewCount * 100;
+            }
+           document.getElementById(product + '-total').innerText ='$'+productTotal;
+           calculateTotal();
+        }
+
+        function calculateTotal() {
+            
+            const phoneInput = getInputValue('product');
+
+            const caseCount = getInputValue('case');
+
+            const totalPrice =phoneCount * 100 + caseCount * 150;
+            document.getElementById('total-price').innerText ='$'+totalPrice;
+
+            const tax = totalPrice * 0.1;
+            document.getElementById('tax-amount').innerText = '$' + tax;
+            const grandTotal = totalPrice + tax;
+            document.getElementById('grandTotal').innerText = '$' + grandTotal;
+        }
+
+        function getInputValue(product) {
+            const productInput = document.getElementById(product +'-count');
+            const productCount = parseInt(productInput.value);
+            return productCount;
+        }
+        
+        // function handleProductChange(isTncrease) {
+        //     var caseInput = document.getElementById("case-count");
+        //    var caseCount = parseInt(caseInput.value);
+        // //    var caseNewCount = caseCount - 1;
+        //     var caseNewCount = caseCount;
+        //     if(isTncrease == true && caseCount>0){
+        //         caseNewCount = caseCount + 1;
+        //     }
+        //     if(isTncrease == false && caseCount>0){
+        //         caseNewCount = caseCount - 1;
+        //     }
+        //    caseInput.value = caseNewCount;
+        //    var caseTotal = caseNewCount * 100;
+        //    document.getElementById('case-total').innerText ='$'+caseTotal;
+            
+        // }
+        // function handleProductChange1(isTncrease) {
+        //     var caseInput1 = document.getElementById("case-count1");
+        //    var caseCount1 = parseInt(caseInput1.value);
+        // //    var caseNewCount = caseCount - 1;
+        //     var caseNewCount1 = caseCount1;
+        //     if(isTncrease == true && caseCount1>0){
+        //         caseNewCount1 = caseCount1 + 1;
+        //     }
+        //     if(isTncrease == false && caseCount1>0){
+        //         caseNewCount1 = caseCount1 - 1;
+        //     }
+        //    caseInput1.value = caseNewCount1;
+        //    var caseTotal1 = caseNewCount1 * 150;
+        //    document.getElementById('case-total1').innerText ='$'+caseTotal1;
+            
+        // }
+        // document.getElementById("case-increase").addEventListener('click', function () {
+        //    var caseInput = document.getElementById("case-count");
+        //    var caseCount = parseInt(caseInput.value);
+        //    var caseNewCount = caseCount + 1;
+        //    caseInput.value = caseNewCount;
+        //    var caseTotal = caseNewCount * 100;
+        //    document.getElementById('case-total').innerText ='$'+caseTotal;
+
+
+
+        //    console.log(caseCount);
+        // })
+        // document.getElementById("case-decrease").addEventListener('click', function () {
+        //    var caseInput = document.getElementById("case-count");
+        //    var caseCount = parseInt(caseInput.value);
+        //    var caseNewCount = caseCount - 1;
+        //    caseInput.value = caseNewCount;
+        //    var caseTotal = caseNewCount * 100;
+        //    document.getElementById('case-total').innerText ='$'+caseTotal;
+
+
+
+        //    console.log(caseCount);
+        // })
+
+
+
+
+
+
+
+
+
+
+
+        // Booking button event handler
+        // login button event handler
+        const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click", function () {
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display ="none";
+            const loginArea1 = document.getElementById("login-area1");
+            loginArea1.style.display ="none";
+
+
+            const transactionArea = document.getElementById("thankYou");
+            transactionArea.style.display ="block";
+        })
+    </script>
+</body>
+
+</html>
