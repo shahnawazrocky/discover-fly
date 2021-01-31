@@ -26,9 +26,10 @@
         </nav>
     </header>
 
-    <!--Booking Section-->
-    <main class="main-content container">
-        <div id="login-area" class="booking-form">
+   <!--Booking Section-->
+   <main>
+    <section id="submit-area" class="main-content container">
+        <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -51,22 +52,20 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="case-count" class="inp-style inp-width" type="number" name="">
+                    <input id="first-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span onclick="handleProductChange('case', true)" >+</span> <span onclick="handleProductChange('case',false)">-</span> </p>
-                    <h6 id="case-total">$150</h6>
+                    <p><button id="first-increase">+</button> <button id="first-decrease">-</button></p>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="0">Economy ($100)</label>
-                    <input id="phone-count" class="inp-style inp-width" type="number" name="">
+                    <label for="">Economy ($100)</label>
+                    <input id="economy-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
-                <div  class="plus-minus-btn">
-                    <p> <span onclick="handleProductChange('phone', true)" >+</span> <span onclick="handleProductChange('phone',false)">-</span> </p>
-                    <h6 id="phone-total">$100</h6>
+                <div class="plus-minus-btn">
+                    <p> <button id="economy-increase">+</button> <button id="economy-decrease">-</button> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -75,16 +74,16 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p id="total-price">$500</p>
+                        <p>$ <span id="sub-total">00</span></p>
                     </div>
                 </div>
 
                 <div class="amount">
                     <div class="left">
-                        <p id="tax-amount">Charge 10% VAT</p>
+                        <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$<span id="tax">00</span></p>
                     </div>
                 </div>
                 <hr>
@@ -93,18 +92,19 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p id="grandTotal">$550</p>
+                        <p>$<span id="grand-total">00</span></p>
                     </div>
                 </div>
             </div>
-            <button id="login" class="btn-style">Book Now</button>
+            <button id="check-out" class="btn-style">Book Now</button>
         </div>
 
-        <div  id="login-area1" class="booking-content">
+        <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p>As one of the largest and most experienced global airlines throughout the COVID-19 crisis, you can rely on us to take you on your next journey safely.</p>
         </div>
-        
+
+    
         
         <div id="thankYou" class="main-content container ">
             <h1>Thank You for <br> picking us</h1>
@@ -115,130 +115,82 @@
 
     <!--Thank You-->
     <script>
-        function handleProductChange(product, isIncrease) {
-            
-            const productCount = getInputValue(product);
-        let productNewCount = productCount;
-            if(isIncrease == true && productCount>0){
-                productNewCount = productCount + 1;
-            }
-            if(isIncrease == false && productCount>0){
-                productNewCount = productCount - 1;
-            }
-            document.getElementById(product + '-count').value = productNewCount;
-        let productTotal=0;
-            if(product== 'case'){
-                productTotal = productNewCount * 150;
-            }
-            if(product== 'phone'){
-                productTotal = productNewCount * 100;
-            }
-           document.getElementById(product + '-total').innerText ='$'+productTotal;
-           calculateTotal();
-        }
-
-        function calculateTotal() {
-            
-            const phoneInput = getInputValue('product');
-
-            const caseCount = getInputValue('case');
-
-            const totalPrice =phoneCount * 100 + caseCount * 150;
-            document.getElementById('total-price').innerText ='$'+totalPrice;
-
-            const tax = totalPrice * 0.1;
-            document.getElementById('tax-amount').innerText = '$' + tax;
-            const grandTotal = totalPrice + tax;
-            document.getElementById('grandTotal').innerText = '$' + grandTotal;
-        }
-
-        function getInputValue(product) {
-            const productInput = document.getElementById(product +'-count');
-            const productCount = parseInt(productInput.value);
-            return productCount;
-        }
-        
-        // function handleProductChange(isTncrease) {
-        //     var caseInput = document.getElementById("case-count");
-        //    var caseCount = parseInt(caseInput.value);
-        // //    var caseNewCount = caseCount - 1;
-        //     var caseNewCount = caseCount;
-        //     if(isTncrease == true && caseCount>0){
-        //         caseNewCount = caseCount + 1;
-        //     }
-        //     if(isTncrease == false && caseCount>0){
-        //         caseNewCount = caseCount - 1;
-        //     }
-        //    caseInput.value = caseNewCount;
-        //    var caseTotal = caseNewCount * 100;
-        //    document.getElementById('case-total').innerText ='$'+caseTotal;
-            
-        // }
-        // function handleProductChange1(isTncrease) {
-        //     var caseInput1 = document.getElementById("case-count1");
-        //    var caseCount1 = parseInt(caseInput1.value);
-        // //    var caseNewCount = caseCount - 1;
-        //     var caseNewCount1 = caseCount1;
-        //     if(isTncrease == true && caseCount1>0){
-        //         caseNewCount1 = caseCount1 + 1;
-        //     }
-        //     if(isTncrease == false && caseCount1>0){
-        //         caseNewCount1 = caseCount1 - 1;
-        //     }
-        //    caseInput1.value = caseNewCount1;
-        //    var caseTotal1 = caseNewCount1 * 150;
-        //    document.getElementById('case-total1').innerText ='$'+caseTotal1;
-            
-        // }
-        // document.getElementById("case-increase").addEventListener('click', function () {
-        //    var caseInput = document.getElementById("case-count");
-        //    var caseCount = parseInt(caseInput.value);
-        //    var caseNewCount = caseCount + 1;
-        //    caseInput.value = caseNewCount;
-        //    var caseTotal = caseNewCount * 100;
-        //    document.getElementById('case-total').innerText ='$'+caseTotal;
-
-
-
-        //    console.log(caseCount);
-        // })
-        // document.getElementById("case-decrease").addEventListener('click', function () {
-        //    var caseInput = document.getElementById("case-count");
-        //    var caseCount = parseInt(caseInput.value);
-        //    var caseNewCount = caseCount - 1;
-        //    caseInput.value = caseNewCount;
-        //    var caseTotal = caseNewCount * 100;
-        //    document.getElementById('case-total').innerText ='$'+caseTotal;
-
-
-
-        //    console.log(caseCount);
-        // })
-
-
-
-
-
-
-
-
-
-
-
-        // Booking button event handler
-        // login button event handler
-        const loginBtn = document.getElementById("login");
-        loginBtn.addEventListener("click", function () {
-            const loginArea = document.getElementById("login-area");
-            loginArea.style.display ="none";
-            const loginArea1 = document.getElementById("login-area1");
-            loginArea1.style.display ="none";
-
-
-            const transactionArea = document.getElementById("thankYou");
-            transactionArea.style.display ="block";
-        })
-    </script>
+        // Booking ticket/ ticket prize
+             function ticketPurchase(isIncrease, count) {
+                      const increaseInput = document.getElementById(count + '-count');
+                      const countInput = parseInt(increaseInput.value);
+                      let totalCountInput = countInput;
+                      if (isIncrease == true && countInput > 0) {
+                          totalCountInput = countInput + 1;
+                      }
+                      if (isIncrease == false && countInput > 0) {
+                          totalCountInput = countInput - 1;
+                      }
+                      increaseInput.value = totalCountInput;
+                      totalTicketPrize();
+                  }
+      
+      
+                  function totalTicketPrize(){
+                      const firstClassTicket = document.getElementById('first-count');
+                      const firstClassTicketRate = parseInt(firstClassTicket.value);
+                      const economyClassTicket = document.getElementById('economy-count');
+                      const economyClassTicketRate = parseInt(economyClassTicket.value);
+      
+                      const totalTicketValue = firstClassTicketRate * 150 + economyClassTicketRate * 100;
+      
+                      const subTotalAmount = document.getElementById('sub-total').innerText = totalTicketValue;
+                      const tax = subTotalAmount * 0.1;
+                      const totalTax = document.getElementById('tax').innerText = tax;
+      
+                      const grandTotalAmount = totalTicketValue + totalTax;
+                      document.getElementById('grand-total').innerText = grandTotalAmount;
+                  }
+      
+      
+                  //Click Handler for first class ticket increase
+                  let firstIncrease = document.getElementById('first-increase');
+                  firstIncrease.addEventListener('click', function () {
+                      ticketPurchase(true, 'first', 'sub-total');
+                  });
+      
+      
+                  // Click Handler for first class ticket decrease
+                  let firstDecrease = document.getElementById('first-decrease');
+                  firstDecrease.addEventListener('click', function () {
+                      ticketPurchase(false, 'first', 'sub-total');
+                  });
+                  
+      
+                  //Click Handler for economy class ticket increase
+                  let economyIncrease = document.getElementById('economy-increase');
+                  economyIncrease.addEventListener('click', function () {
+                      ticketPurchase(true, 'economy', 'sub-total');
+                  });
+      
+      
+                  // Click Handler for economy class ticket decrease
+                  let economyDecrease = document.getElementById('economy-decrease');
+                  economyDecrease.addEventListener('click', function () {
+                      ticketPurchase(false, 'economy', 'sub-total');
+                  });
+      
+      
+      
+      
+              // Booking button event handler
+              const loginBtn = document.getElementById("login");
+              loginBtn.addEventListener("click", function () {
+                  const loginArea = document.getElementById("login-area");
+                  loginArea.style.display ="none";
+                  const loginArea1 = document.getElementById("login-area1");
+                  loginArea1.style.display ="none";
+      
+      
+                  const transactionArea = document.getElementById("thankYou");
+                  transactionArea.style.display ="block";
+              })
+          </script>
 </body>
 
 </html>
