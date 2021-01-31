@@ -103,15 +103,20 @@
             <h1>discover <br> around the world</h1>
             <p>As one of the largest and most experienced global airlines throughout the COVID-19 crisis, you can rely on us to take you on your next journey safely.</p>
         </div>
-
-    
-        
-        <div id="thankYou" class="main-content container ">
-            <h1>Thank You for <br> picking us</h1>
-            
-        </div>
     </section>
     
+    <section>
+        <div id="confirmation">                        
+               <div class="text-center">
+                  <div class="booking-confirmation">
+                     <h1 style="font-size: 40px;">Your booking has been</h1>
+                     <h1 style="font-size: 45px;">confirmed</h1>
+                     <br>
+                     <br>
+                     <h1>Have a safe journey</h1>
+                </div>            
+         </div>
+     </section>
 
     <!--Thank You-->
     <script>
@@ -173,23 +178,16 @@
                   let economyDecrease = document.getElementById('economy-decrease');
                   economyDecrease.addEventListener('click', function () {
                       ticketPurchase(false, 'economy', 'sub-total');
-                  });
-      
-      
-      
-      
-              // Booking button event handler
-              const loginBtn = document.getElementById("login");
-              loginBtn.addEventListener("click", function () {
-                  const loginArea = document.getElementById("login-area");
-                  loginArea.style.display ="none";
-                  const loginArea1 = document.getElementById("login-area1");
-                  loginArea1.style.display ="none";
-      
-      
-                  const transactionArea = document.getElementById("thankYou");
-                  transactionArea.style.display ="block";
-              })
+                  });    
+    
+                  // Booking button event handler
+                    const checkOut = document.getElementById("check-out");    
+                    checkOut.addEventListener('click', function(){
+                    const submitArea = document.getElementById('submit-area');
+                    submitArea.style.display= 'none';
+                    const confirmArea = document.getElementById('confirmation');
+                    confirmArea.style.display = 'block';
+                 });
           </script>
 </body>
 

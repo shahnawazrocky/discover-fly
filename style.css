@@ -121,7 +121,7 @@ nav ul li a:hover, a.active{
     justify-content: space-between;
 }
 
-#thankYou{
+/* #thankYou{
     margin-top: 340px;
     display: none;
     
@@ -131,4 +131,20 @@ nav ul li a:hover, a.active{
     text-align: center;
     color: white;
     font-size: 60px;
+} */
+#confirmation{
+	display: none;
+	padding: 100px 100px;
+	
+}
+.booking-confirmation{
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 100px;
+    color: black;
+    font-family: arial;
+    box-shadow: 10px 10px 25px gray;
+    width: 40%;
+    text-align: center;
+    margin: auto;
 }
