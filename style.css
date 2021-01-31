@@ -121,24 +121,13 @@ nav ul li a:hover, a.active{
     justify-content: space-between;
 }
 
-/* #thankYou{
-    margin-top: 340px;
-    display: none;
-    
-}
-#thankYou h1{
-    
-    text-align: center;
-    color: white;
-    font-size: 60px;
-} */
 #confirmation{
 	display: none;
 	padding: 100px 100px;
 	
 }
 .booking-confirmation{
-    background-color: #ffffff;
+    background-color:wheat;
     border-radius: 10px;
     padding: 100px;
     color: black;
